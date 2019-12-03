@@ -24,16 +24,11 @@
     when: ansible_os_family == "RedHat"
     tags: httpd_rhel
 
-  - name: Ensure latest index.html is present
-    template:
-      src: templates/index.html.j2
-      dest: /var/www/html/index.html 
-
   - name: 2. Redhat | Ensure httpd is started and enabled
     service:
       name: httpd
       state: started
-      enabled: yes
+      enabled: yes  
   
   - name: 3. RedHat | Allow http Protocol
     firewalld:
